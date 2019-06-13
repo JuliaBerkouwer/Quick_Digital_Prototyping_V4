@@ -99,8 +99,8 @@ public class ScoreManager : MonoBehaviour
     public void StartBlinking()
     {
         StopAllCoroutines();
-        StartCoroutine("BlinkAllies");
-        StartCoroutine("BlinkMultiplier");
+        StartCoroutine("Blink");
+
     }
     /*  public void WaveCounter(int waveCount)
     {
@@ -152,6 +152,8 @@ public class ScoreManager : MonoBehaviour
     public void StopBlinking()
     {
         StopAllCoroutines();
+        friendsImage.color = new Color(friendsImage.color.r, friendsImage.color.g, friendsImage.color.b, 0);
+        multiplierEnemyImage.color = new Color(multiplierEnemyImage.color.r, multiplierEnemyImage.color.g, multiplierEnemyImage.color.b, 0);
     }
 
     private IEnumerator timer()
@@ -160,7 +162,7 @@ public class ScoreManager : MonoBehaviour
         RemoveMultiplier();
     }
 
-    IEnumerator BlinkAllies()
+    IEnumerator Blink()
     {
         while (true)
         {
@@ -168,30 +170,12 @@ public class ScoreManager : MonoBehaviour
             {
                 case "0":
                     friendsImage.color = new Color(friendsImage.color.r, friendsImage.color.g, friendsImage.color.b, 1);
-                    //Play sound
-                    yield return new WaitForSeconds(0.5f);
-                    break;
-                case "1":
-                    friendsImage.color = new Color(friendsImage.color.r, friendsImage.color.g, friendsImage.color.b, 0);
-                    //Play sound
-                    yield return new WaitForSeconds(0.5f);
-                    break;
-            }
-        }
-    }
-
-    IEnumerator BlinkMultiplier()
-    {
-        while (true)
-        {
-            switch (multiplierEnemyImage.color.a.ToString())
-            {
-                case "0":
                     multiplierEnemyImage.color = new Color(multiplierEnemyImage.color.r, multiplierEnemyImage.color.g, multiplierEnemyImage.color.b, 1);
                     //Play sound
                     yield return new WaitForSeconds(0.5f);
                     break;
                 case "1":
+                    friendsImage.color = new Color(friendsImage.color.r, friendsImage.color.g, friendsImage.color.b, 0);
                     multiplierEnemyImage.color = new Color(multiplierEnemyImage.color.r, multiplierEnemyImage.color.g, multiplierEnemyImage.color.b, 0);
                     //Play sound
                     yield return new WaitForSeconds(0.5f);
@@ -199,5 +183,6 @@ public class ScoreManager : MonoBehaviour
             }
         }
     }
+
 
 }

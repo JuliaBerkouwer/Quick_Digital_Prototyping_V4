@@ -9,8 +9,14 @@ public class CompletePlayerController : MonoBehaviour
     public GameObject playerBulletGO;
     public GameObject bulletPosition01;
     public GameObject bulletPosition02;
+
     public GameObject deathEffect;
     public GameObject impactEffect;
+
+    public AudioSource playerAudioSource;
+    public AudioClip impactSound;
+    public AudioClip deathSound;
+
     public int damage = 3;
     public int currentHealth = 9;
     private bool isHit = false;
@@ -22,16 +28,8 @@ public class CompletePlayerController : MonoBehaviour
     private float flashTimer = .05f; // number of enemies you want to spawn
 
 
-
-    void Start()
-    {
-
-    }
-
     void Update()
     {
-
-
         if (Input.GetButtonDown("Fire1"))
         {
             GameObject bullet01 = (GameObject)Instantiate(playerBulletGO);
@@ -86,12 +84,16 @@ public class CompletePlayerController : MonoBehaviour
     {
         GameObject DeathEffect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         DeathEffect.GetComponent<ParticleSystem>().Play();
+        playerAudioSource.clip = deathSound;
+        playerAudioSource.Play();
     }
 
     private void ImpactVFX()
     {
         GameObject ImpactEffect = Instantiate(impactEffect, transform.position, Quaternion.identity);
         ImpactEffect.GetComponent<ParticleSystem>().Play();
+        playerAudioSource.clip = deathSound;
+        playerAudioSource.Play();
     }
 
     IEnumerator StartFlash()
@@ -108,11 +110,6 @@ public class CompletePlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "BlinkingTag")
-        {
-            ScoreManager.Instance.StartBlinking();
-        }
-
         if (((col.gameObject.tag == "EnemyShipTag") || (col.gameObject.tag == "EnemyBulletTag") || (col.gameObject.tag == "BossBulletTag")) && (!isHit))
         {
             StartCoroutine(StartFlash());
