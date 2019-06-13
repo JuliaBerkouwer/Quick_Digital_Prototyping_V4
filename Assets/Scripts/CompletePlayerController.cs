@@ -59,19 +59,6 @@ public class CompletePlayerController : MonoBehaviour
         Destroy(gameObject);
     }
 
-
-    public void CheckingIsHit()
-    {
-        if (isHit)
-        {
-
-        }
-        if (!isHit)
-        {
-
-        }
-    }
-
     void Move(Vector2 direction)
     {
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));

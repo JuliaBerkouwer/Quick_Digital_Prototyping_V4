@@ -49,50 +49,8 @@ MonoBehaviour:
     enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
     count: 1
     delay: 2
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 2
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 2
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 3
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 3
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 4
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 4
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 5
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 5
-    delay: 1
-  - name: EnemyInvasion
-    enemy: {fileID: 8853380132441883580, guid: fe556a5cba3d2e945a69ce1fad4ff461, type: 3}
-    count: 6
-    delay: 1
-  - name: BossEnemy
-    enemy: {fileID: 910935134374370808, guid: 1d6ccf09876058844896f2c1d314dfe6, type: 3}
-    count: 1
-    delay: 1
   spawnPoints:
   - {fileID: 7667316496118290535}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -113,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000,
+      objectReference: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000,
         type: 0}
     - target: {fileID: 728125685199472168, guid: f11a1792f40e31049ab9154b32bd7b19,
         type: 3}
@@ -123,7 +81,7 @@ PrefabInstance:
     - target: {fileID: 728125685199472168, guid: f11a1792f40e31049ab9154b32bd7b19,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.87
+      value: 93.88
       objectReference: {fileID: 0}
     - target: {fileID: 728125685199472168, guid: f11a1792f40e31049ab9154b32bd7b19,
         type: 3}

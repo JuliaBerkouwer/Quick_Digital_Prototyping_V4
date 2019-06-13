@@ -40,7 +40,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "PlayerBulletTag" && !isHit)
+        if (((collision.gameObject.tag == "PlayerBulletTag") || (collision.gameObject.tag == "WallTag")) && !isHit)
         {
             isHit = true;
             currentHealth -= damage;

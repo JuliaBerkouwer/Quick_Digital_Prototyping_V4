@@ -70,8 +70,8 @@ public class WaveSpawner : MonoBehaviour
 
         if (nextWave + 1 > waves.Length - 1) // Add on things here if you've completed all waves
         {
-            ScoreManager.Instance.ResetSceneUI();
-            //nextWave = 0;
+            //ScoreManager.Instance.ResetSceneUI();
+            nextWave = 0;
         }
         else
         {
