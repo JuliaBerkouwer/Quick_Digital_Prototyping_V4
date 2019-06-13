@@ -4,8 +4,8 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] public float speed;
     private bool isHit = false;
-    [SerializeField] public int currentHealth;                    // The current health the enemy has.
-    [SerializeField] public int damage;
+    [SerializeField] public float currentHealth;                    // The current health the enemy has.
+    [SerializeField] public float damage;
     [SerializeField] public int scoreValue = 10;               // The amount added to the player's score when the enemy dies.
 
 

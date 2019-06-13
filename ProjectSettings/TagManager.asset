@@ -13,6 +13,7 @@ TagManager:
   - Friend
   - WallTag
   - EnemyRedBulletTag
+  - WinTag
   layers:
   - Default
   - TransparentFX

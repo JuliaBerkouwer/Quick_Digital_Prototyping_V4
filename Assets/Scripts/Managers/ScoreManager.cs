@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     public static int score;
     public static int waves;
     public int multiplier = 1;
+    public int sceneIndex;
 
     static ScoreManager mInstance;
 
@@ -16,6 +18,12 @@ public class ScoreManager : MonoBehaviour
     Text multiplierText;
     Text restartSceneText;
     Text wavesText;
+    Text levelNumberText;
+    Text gameOverText;
+    Text levelCompleteText;
+
+    Image friendsImage;
+    Image multiplierEnemyImage;
 
     //public Image stHealthImg;
 
@@ -49,11 +57,36 @@ public class ScoreManager : MonoBehaviour
         GameObject restartSceneTextUI = GameObject.Find("RestartSceneText");
         restartSceneText = restartSceneTextUI.GetComponent<Text>();
 
+        GameObject levelCompleteTextUI = GameObject.Find("LevelCompleteText");
+        levelCompleteText = levelCompleteTextUI.GetComponent<Text>();
+
+        GameObject gameOverTextUI = GameObject.Find("GameOverText");
+        gameOverText = gameOverTextUI.GetComponent<Text>();
+
+        GameObject levelNumberTextUI = GameObject.Find("LevelNumberText");
+        levelNumberText = levelNumberTextUI.GetComponent<Text>();
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+
+
         //GameObject stHealthImgUI = GameObject.Find("stHealthImage");
         //stHealthImg = stHealthImgUI.GetComponent<Image>();
 
+        GameObject friendsImageUI = GameObject.Find("FriendsImage");
+        friendsImage = friendsImageUI.GetComponent<Image>();
+
+        GameObject multiplierEnemyImageUI = GameObject.Find("MultiplierEnemyImage");
+        multiplierEnemyImage = multiplierEnemyImageUI.GetComponent<Image>();
         // Reset the score.
+
         score = 0;
+
+        StopBlinking();
+    }
+
+    void Update()
+    {
+        levelNumberText.text = "Level " + sceneIndex;
     }
 
     public void AddScore(int enemyScore)
@@ -63,6 +96,12 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = "Score: " + score.ToString();
     }
 
+    public void StartBlinking()
+    {
+        StopAllCoroutines();
+        StartCoroutine("BlinkAllies");
+        StartCoroutine("BlinkMultiplier");
+    }
     /*  public void WaveCounter(int waveCount)
     {
         waves += waveCount;
@@ -72,6 +111,16 @@ public class ScoreManager : MonoBehaviour
     public void ResetSceneUI()
     {
         restartSceneText.text = "Press ESC to restart";
+    }
+
+    public void GameOverUI()
+    {
+        gameOverText.text = "Game Over";
+    }
+
+    public void WinUI()
+    {
+        levelCompleteText.text = "Level " + sceneIndex + " Complete!";
     }
 
     public void AddMultiplier()
@@ -100,9 +149,55 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void StopBlinking()
+    {
+        StopAllCoroutines();
+    }
+
     private IEnumerator timer()
     {
         yield return new WaitForSeconds(multiplierCooldown);
         RemoveMultiplier();
     }
+
+    IEnumerator BlinkAllies()
+    {
+        while (true)
+        {
+            switch (friendsImage.color.a.ToString())
+            {
+                case "0":
+                    friendsImage.color = new Color(friendsImage.color.r, friendsImage.color.g, friendsImage.color.b, 1);
+                    //Play sound
+                    yield return new WaitForSeconds(0.5f);
+                    break;
+                case "1":
+                    friendsImage.color = new Color(friendsImage.color.r, friendsImage.color.g, friendsImage.color.b, 0);
+                    //Play sound
+                    yield return new WaitForSeconds(0.5f);
+                    break;
+            }
+        }
+    }
+
+    IEnumerator BlinkMultiplier()
+    {
+        while (true)
+        {
+            switch (multiplierEnemyImage.color.a.ToString())
+            {
+                case "0":
+                    multiplierEnemyImage.color = new Color(multiplierEnemyImage.color.r, multiplierEnemyImage.color.g, multiplierEnemyImage.color.b, 1);
+                    //Play sound
+                    yield return new WaitForSeconds(0.5f);
+                    break;
+                case "1":
+                    multiplierEnemyImage.color = new Color(multiplierEnemyImage.color.r, multiplierEnemyImage.color.g, multiplierEnemyImage.color.b, 0);
+                    //Play sound
+                    yield return new WaitForSeconds(0.5f);
+                    break;
+            }
+        }
+    }
+
 }

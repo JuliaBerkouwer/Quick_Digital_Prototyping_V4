@@ -248,8 +248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  currentHealth: 200
-  damage: 2
+  currentHealth: 2
+  damage: 0.02
   scoreValue: 5000
 --- !u!114 &6818986389313976665
 MonoBehaviour:
@@ -423,6 +423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3856791545395887764}
   - component: {fileID: 5653428124340308317}
+  - component: {fileID: 3820773754408099339}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -492,6 +493,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3820773754408099339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100743737461703324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 904df4d0489be3d44a5cfceaa883628d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 7448279131015833942}
 --- !u!1 &3306770634618800233
 GameObject:
   m_ObjectHideFlags: 0

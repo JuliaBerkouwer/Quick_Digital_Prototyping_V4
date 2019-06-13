@@ -55,8 +55,10 @@ public class CompletePlayerController : MonoBehaviour
     public void DestoryPlayer()
     {
         ScoreManager.Instance.ResetSceneUI();
+        ScoreManager.Instance.GameOverUI();
         Explosion();
         Destroy(gameObject);
+
     }
 
     void Move(Vector2 direction)
@@ -82,7 +84,13 @@ public class CompletePlayerController : MonoBehaviour
 
     private void Explosion()
     {
-        GameObject ImpactEffect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        GameObject DeathEffect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        DeathEffect.GetComponent<ParticleSystem>().Play();
+    }
+
+    private void ImpactVFX()
+    {
+        GameObject ImpactEffect = Instantiate(impactEffect, transform.position, Quaternion.identity);
         ImpactEffect.GetComponent<ParticleSystem>().Play();
     }
 
@@ -100,13 +108,21 @@ public class CompletePlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        if (col.gameObject.tag == "BlinkingTag")
+        {
+            ScoreManager.Instance.StartBlinking();
+        }
+
         if (((col.gameObject.tag == "EnemyShipTag") || (col.gameObject.tag == "EnemyBulletTag") || (col.gameObject.tag == "BossBulletTag")) && (!isHit))
         {
             StartCoroutine(StartFlash());
             isHit = true;
             currentHealth -= damage;
             healthSlider.value = currentHealth;
+            ImpactVFX();
             isHit = false;
         }
+
     }
+
 }
